@@ -1,0 +1,434 @@
+/*Animations*/
+@keyframes slideUp {
+    from {margin-top: 100px; opacity: 0}
+    to {margin-top: 40px; opacity: 1;}
+}
+@keyframes toastSlideUp{
+  from {bottom: -48px;}
+  to {bottom: 0px;}
+}
+@keyframes fadeIn{
+	from{opacity: 0;}
+	to{opacity: 1;}
+}
+@keyframes slideDown {
+	from {height: 0px; opacity: 0;}
+	to {height: 125px; opacity: 1;}
+}
+@keyframes iconEntree{
+	from {
+		transition: .35s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+		transform: scale(0);
+	}
+	to {transform: scale(1);}
+}
+@keyframes cancellKeyframe{
+	from{}
+	to{}
+}
+
+.mdl-js{
+	height: 0px;
+}
+body{
+	background-color: #E3F2FD;
+}
+#Edge{
+	top:0px;
+	background-color: #2196F3;
+	width: 100%;
+	height: 125px;
+	box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+	animation-name: slideDown;
+    animation-duration: 0.75s;
+    position: absolute;
+}
+#Card{
+	margin: 40px auto 20px auto;
+	width: 90%;
+	height: auto;
+	animation-name: slideUp;
+    animation-duration: 1s;
+    display:none;
+}
+.productsContainer{
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width:auto;
+	padding-bottom:40px;
+}
+.content{
+	margin: 1% 1% 1% 1%;
+	padding: 2% 1% 2% 1%;
+	height: 100%;
+}
+.product{
+	display: inline-block;
+	margin: 10px .50em 10px .50em;
+	transition:1;
+}
+.mdl-card__actions{
+  display: flex;
+  box-sizing:border-box; 
+  align-items: center;
+}
+.mdl-card_supporting-text{
+	color:rgba(63,81,181,0.87);
+}
+.productImage{
+	margin-left: 50px;
+	height: 200px;
+	width: 200px;
+}
+.extraInformation p{
+	text-align: center; 
+	margin-bottom: 9px;
+}
+p{
+	text-align: center;
+}
+/*Floating action button*/
+#fab{
+	background-color: #448AFF;
+	position: relative;
+	top:0.75em;
+	right:5%;
+	z-index: 2;
+	box-shadow:0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+	transition: .35s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	transform: scale(1);
+	animation-name: iconEntree;
+    animation-duration: 1.5s; 
+}
+#fab:hover{
+	box-shadow:0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32);
+}
+#fab.hovered{
+	transform: scale(1);
+	transition: .35s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+.RemoveButtonColor{
+	color:#EF5350;
+}
+.addCart{
+	margin-right:12px;
+}
+#count{
+/*	display: block;
+	position: absolute;
+	top:32px;
+	right:210px;
+	cursor: pointer;*/
+}
+#count.enter{
+	animation-name: iconEntree;
+    animation-duration: 1s; 
+    tranform: scale(1);
+}
+#userInfo{
+	padding: 5% 5% 5% 5%;
+	display:none;
+}
+#userName{
+	height: 20px;
+	float:right;
+}
+#profilePicture{
+	margin: 1% 1% 1% 1%;
+	width:75px; 
+	heigth:75px; 
+	border-radius: 50%;
+	float:left;
+}
+#googleLogin{
+	margin-left: 5%;
+	height: 45px;
+	width:190px;
+	cursor: pointer;
+}
+#loadingBar{
+	width: 100%;
+	position: fixed;
+}
+.extraInformation, .close{
+	display: none;
+}
+.extraInformation{
+	height: 218px;
+	overflow-y: auto;
+}
+.addingReviews{
+	display:none;
+}
+/*Checkout*/
+#OuterCircle{
+	display: none;
+	margin-top: 1%;
+	margin-left: 22%;
+	margin-right: 22%;
+	background-color: #2196F3;
+	width:500px;
+	height: 500px;
+	border-radius: 50%;
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+#OuterCircle *{
+	animation-name: iconEntree;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+#innerCircle{
+	position: relative;
+	top: 85px;
+	left: 170px;
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	background-color: #E3F2FD;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+#innerCircle img{
+	margin-left:35px;
+	margin-top:25px;
+}
+#contentCircle p{
+	font-size: 40px;
+	position: relative;
+	top: 100px;
+	left: 0px;
+	color: white;
+}
+#contentCircle div{
+	position: relative;
+	top: 100px;
+	left: 15%;
+	color: white;
+	width: 75%;
+	word-wrap:break-word;
+	text-align:center; 
+
+}
+#contentCircle a{
+	color: inherit;
+}
+p{
+	vertical-align: middle;
+}
+#myTable{
+	margin-right: 20%;
+	margin-left: 20%;
+	display: none;
+}
+.numericTextfield{
+	width:20px;
+}
+#quantity{
+	width:40px;
+}
+#deleteButtonTd{
+	padding-top: 7px;
+}
+#toast{
+  padding-top:14px;
+  padding-bottom:14px;
+  margin-top:5px !important;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius: 2px;
+  position: fixed;
+  width:200px;
+  bottom: 0px;
+  background-color: #333333;
+  animation-name:toastSlideUp;
+  animation-duration:0.75s;
+  z-index:2;
+}
+#toastText{
+  float:left;
+  color: white;
+  opacity: 1;
+  animation-name:fadeIn;
+  animation-duration:0.75s;
+  padding-left:24px;
+  padding-right:24px;
+}
+#toastAction{
+    padding-right:24px;
+	cursor: pointer;
+	padding-left:24px;
+	color:#EF5350;
+	display:none;
+	float:right;
+}
+#Searchbar{
+	display: block;
+	margin:10px auto;
+}
+/*Media queries*/
+ @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  	body{
+  		/*background-color: red;*/
+  	}
+
+  	#Card{
+		margin: 50px auto 20px auto;
+		width: 90%;
+		height: 100%;
+		animation-name: slideUp;
+	    animation-duration: 1s; 
+	}
+
+	#toastAction{
+		float:right;
+	}
+}
+
+/*Mobile | One card view*/
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 324px)
+and (orientation : portrait) {
+	/*Fixing button text*/
+	.Remove, .Add{
+		font-size: 13px;
+	}
+}
+
+/*Mobile general properties keyframes*/
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 400px){
+	#toast{
+		width:100%;
+		margin-right:0px;
+		margin-left:0px;
+		margin-top: 50px;
+		border-radius: 0px;
+	}
+	#fab{
+		position: fixed;
+		right: 0.5em;
+	}
+	.fabUp{
+		bottom: calc(-100vh + 8em);
+		transition:linear 0.50s !important;
+	}
+	.fabDown{
+		bottom: calc(-100vh + 4.0em);
+		transition:ease-out 0.75s 0.25s !important;
+	}
+	#Edge{
+		display: none;
+		animation-name:cancellKeyframe;
+	}
+	#Card{
+		width: 100%;
+		margin: 0px 0px 0px 0px;
+		border-radius: 0px;
+		animation-name:cancellKeyframe;
+		display: none;
+
+	}
+}
+
+/*320 - 350 */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 350px) { 
+	#Edge{
+	display: none;
+	animation-name:cancellKeyframe;
+	}
+	#Card{
+		width: 100vw;
+		margin: 0px 0px 0px 0px;
+		border-radius: 0px;
+		animation-name:cancellKeyframe;
+		display: none;
+		/*background-color: red;*/
+	}
+	.product{
+		width:95vw;
+	    margin: 5px auto 5px auto;
+	}
+	/*Checkout*/
+	#tableWrapper{
+		overflow-x: scroll;
+		margin-right:5vw; 
+		margin-left:5vw;
+	}
+	table{
+		table-layout: fixed;
+	}
+	#myTable{
+	margin-right: 1%;
+	margin-left: 1%;
+	display: none;
+	}
+}
+
+@media only screen 
+and (min-device-width : 350px) /*10*/
+and (max-device-width : 400px) /*35*/ { 
+		
+		/*.productsContainer{
+			margin-left: calc((100vw - 330px) /2 );
+			margin-right: calc((100vw - 330px) /2 );
+		}
+		.productsContainer .mdl-card{
+		display: block;
+		margin: 10px 0vw 10px 0vw;
+		}*/
+		
+		#tableWrapper{
+			overflow-x: scroll;
+			margin-right:5vw; 
+			margin-left:5vw;
+		}
+		table{
+			table-layout: fixed;
+		}
+		#myTable{
+		margin-right: 1%;
+		margin-left: 1%;
+		display: none;
+		}
+
+	}
+
+
+/* ----------- Non-Retina Screens ----------- */
+
+
+/*Moto 360*/
+@media 
+  (max-device-width: 218px)
+  and (max-device-height: 281px) { 
+  	#Edge{
+			display: none;
+			animation-name:cancellKeyframe;
+		}
+		#Card{
+			width: 100%;
+			margin: 0px 0px 0px 0px;
+			border-radius: 0px;
+			animation-name:cancellKeyframe;
+			background-color: grey;
+		}
+	  	.product{
+	  		width: 93vw;
+	  		min-width: 0px;
+	  	}
+	  	.productImage{
+	  		height: 100px;
+	  		width: 100px;
+	  	}
+}

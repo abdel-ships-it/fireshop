@@ -1,0 +1,119 @@
+<!doctype html>
+<html ng-app="Webshop">
+	<head>
+		<title>Webshop</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#2196F3"></meta>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+		<link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
+		<script src="bower_components/material-design-lite/material.min.js"></script>
+		<link rel="stylesheet" href="styling/Style.css">
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="js/controllers/app.js"></script>
+		<script src="js/directives/card.js"></script>
+	</head>
+	<body ng-controller="CardsViewController">
+			<div id="Edge"></div>
+			<div id="loadingBar" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+			<div id="Card" class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+				mdl-layout--fixed-tabs mdl-card mdl-shadow--4dp">
+				<header class="mdl-layout__header">
+					<div class="mdl-layout__header-row">
+						<span class="mdl-layout-title">Webshop</span>
+						<!-- <div class="mdl-layout-spacer"></div>
+						<i class="material-icons mdl-badge enter" data-badge="0" id="count">shopping_cart</i> -->
+						<div class="mdl-card__menu">
+							<button id="fab" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fabDown">
+							<i class="material-icons mdl-badge">shopping_cart</i>
+							</button>
+						</div>
+					</div>
+				</header>
+				<!-- Drawer  begin-->
+				<div class="mdl-layout__drawer">
+					<span class="mdl-layout-title">A1ZA</span>
+					<img id="googleLogin" class="login" src="img/google-signin.png">
+					<div id="userInfo">
+							<img id="profilePicture"></img>
+							<h6 class="rightCorner userName" id="userName"></h6>
+					</div>
+					<nav class="mdl-navigation">
+						<a class="mdl-navigation__link" href="checkout.html">Checkout</a>
+						<a class="mdl-navigation__link" href="dashboard.html">Dashboard</a>
+					</nav>
+				</div>
+
+				<!-- Drawer  end-->
+				<div id="wrapper">
+					<div class="mdl-textfield mdl-js-textfield" id="Searchbar">
+							<input class="mdl-textfield__input" type="text" id="" ng-model="productsFilter"/>
+							<label class="mdl-textfield__label" for="Search">Search..</label>
+					</div>
+					<div class="productsContainer">
+						<!-- Search bar -->
+						  <!-- <div class="mdl-textfield mdl-js-textfield">
+						    <input class="mdl-textfield__input" type="text" id="Model" ng-model="modelFilter.model"/>
+						    <label class="mdl-textfield__label" for="Model">Model..</label>
+						  </div> -->
+						  
+						<br>
+						<!-- Card start -->
+						<div class="mdl-card mdl-shadow--2dp product card{{ product.id }}" ng-repeat="(key,product) in products | filter:productsFilter | filter:modelFilter" on-last-repeat>
+							<div class="mdl-card__title">
+							<h2 class="mdl-card__title-text" >{{ product.name }}</h2>
+							<div class="mdl-layout-spacer"></div>
+							<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect info">
+							<i class="icon material-icons" id="extraInfoButton{{ product.id }}">info_outline</i>
+						</div>
+						<img class="productImage" ng-src="{{product.img}}" alt="{{ product.name }}">
+						<div class="mdl-card__supporting-text">Price: <b>{{ product.price }}$</b></div>
+						<div class="mdl-card__supporting-text extraInformation">
+							<p>Processor: Intel Core i7-4516HQ</p>
+							<p>Ram: 12GB | Type: DDR3</p>
+							<p>Storage: 256GB SSD | Speed: 7000 RPM</p>
+							<p>OS: {{ product.operatingSystem }}</p>
+							<p>Screensize: 15.6 inches</p>
+							<p>WiFi Type: 802.11b/g/n</p>
+							<pre>{{key}}</pre>
+							<hr>
+							<span> 
+								  <div ng-repeat="(key, data) in reviews[$index]">User:{{ data.user }} | Comment:{{ data.comment }} | Rating:{{ data.rating }}</div>
+							</span>
+							<hr>
+							<!-- Comments testing -->
+							<label class="addingReviewsWarning">To add a review please <a href="" class="login">login</a></label>
+							 <div class="addingReviews">
+							 Reviewing as <span class="userName"></span>
+								 <input type="text" class="{{ product.id }}"></input>
+								 <button class="addComment">Add</button>
+							 </div>
+						</div>
+						<div id="{{ product.id }}" class="mdl-card__actions mdl-card--border">
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-js-ripple-effect Add">
+								Add to cart
+							</a>
+							<a class="mdl-button mdl-js-button mdl-js-ripple-effect Remove RemoveButtonColor">
+								Remove from cart
+							</a>
+							<!-- <div class="mdl-layout-spacer"></div>
+							<i class="material-icons addCart">add_shopping_cart</i> -->
+
+						</div>
+						<!-- Card end -->
+					</div>
+					<!-- Products Container end -->
+				</div>
+				<!-- Wrapper end -->
+			</div>
+			<!-- Card end -->
+		</div>
+		<!-- Container end -->
+		<div id="toast">
+			<span id="toastText">Establishing connection</span>
+			<span id="toastAction">Undo</span>
+		</div>
+</body>
+</html>

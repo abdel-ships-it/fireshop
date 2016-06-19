@@ -1,0 +1,18 @@
+<div class="mdl-card mdl-shadow--2dp dashCard" ng-repeat="product in products">
+	<div class="mdl-card__title">
+		<h2 class="mdl-card__title-text">{{product.name}}</h2>
+	</div>
+	<img class="productImage" ng-src="{{product.img}}" alt="{{ product.name }}">
+	<div class="mdl-card__supporting-text">
+		
+	</div>
+
+	<div class="mdl-card__actions mdl-card--border">
+		<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="editProduct(product.id)">
+			Edit
+		</a>
+		<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect delete" ng-click="deleteProduct(product.id)">
+			Delete
+		</a>
+	</div>
+</div>

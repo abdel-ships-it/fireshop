@@ -1,0 +1,22 @@
+<html ng-app="Webshop">
+	<head>
+		<title>Webshop</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#2196F3"></meta>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+		<link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
+		<script src="bower_components/material-design-lite/material.min.js"></script>
+		<link rel="stylesheet" href="styling/Style.css">
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="js/controllers/app.js"></script>
+		<script src="js/directives/card.js"></script>
+	</head>
+	<body ng-controller="CardsViewController">
+		<div class="productsContainer">
+			<card products="products" reviews="reviews"></card>
+		</div>
+	</body>
+</html>

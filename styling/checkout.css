@@ -1,0 +1,145 @@
+/*Not being used*/
+/*Animations*/
+@keyframes slideUp {
+    from {margin-top: 100px; opacity: 0}
+    to {margin-top: 65px; opacity: 1;}
+}
+
+@keyframes slideDown {
+	from {height: 0px; opacity: 0;}
+	to {height: 125px; opacity: 1;}
+}
+@keyframes iconEntree{
+	from {
+		transition: .35s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+		transform: scale(0);
+	}
+	to {transform: scale(1);}
+}
+@keyframes cancellKeyframe{
+	from{}
+	to{}
+}
+
+
+.mdl-js{
+	height: 0px;
+}
+body{
+	background-color: #E3F2FD;
+}
+#Edge{
+	top:0px;
+	left:0;
+	background-color: #2196F3;
+	width: 100%;
+	height: 125px;
+	position: absolute;
+	box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+	animation-name: slideDown;
+    animation-duration: 0.75s;
+}
+#Card{
+	margin: 65px auto 20px auto;
+	width: 90%;
+	animation-name: slideUp;
+    animation-duration: 1s;
+    height:50em; 
+    overflow-y: hidden;
+}
+#cardChild{
+	
+}
+#wrapper{
+	overflow-y:auto;
+}
+.content{
+	margin: 1% 1% 1% 1%;
+	padding: 2% 1% 2% 1%;	
+}
+.rightCorner#accountInfo, .rightCorner#userName{
+	position: absolute;
+	top:10px;
+	right:10px;
+	height: 45px;
+	width:190px;
+}
+.login{
+	margin-left: 5%;
+	height: 45px;
+	width:190px;
+	cursor: pointer;
+}
+
+/*Check out*/
+#OuterCircle{
+	display: none;
+	margin-top: 1%;
+	margin-left: 22%;
+	margin-right: 22%;
+	background-color: #2196F3;
+	width:500px;
+	height: 500px;
+	border-radius: 50%;
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+#OuterCircle *{
+	animation-name: iconEntree;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+#innerCircle{
+	position: relative;
+	top: 85px;
+	left: 170px;
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	background-color: #E3F2FD;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	
+}
+#innerCircle img{
+	margin-left:35px;
+	margin-top:25px;
+}
+#contentCircle p{
+	font-size: 40px;
+	position: relative;
+	top: 100px;
+	left: 0px;
+	color: white;
+}
+#contentCircle div{
+	position: relative;
+	top: 100px;
+	left: 15%;
+	color: white;
+	width: 75%;
+	word-wrap:break-word;
+	text-align:center; 
+
+}
+#contentCircle a{
+	color: inherit;
+}
+p{
+	 text-align:center; 
+}
+#myTable{
+	margin-right: 20%;
+	margin-left: 20%;
+}
+.numericTextfield{
+	width:20px;
+}
+#loadingBar{
+	width:90%;
+	margin-right: 5%;
+	margin-left: 5%;
+}
+#quantity{
+	width:40px;
+}
+

@@ -1,0 +1,101 @@
+<!doctype html>
+<html ng-app="checkOut">
+	<head>
+		<title>Checkout</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#2196F3"></meta>
+		<link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
+		<script src="bower_components/material-design-lite/material.min.js"></script>
+		<link rel="stylesheet" href="styling/Style.css">
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+		<script src="js/controllers/app.js"></script>
+		
+	</head>
+	<body><!-- ng-controller="priceController" -->
+	
+	<div id="Edge"></div>
+	<div id="loadingBar" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+	<div id="Card" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs mdl-card mdl-shadow--4dp">
+		<header class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<span class="mdl-layout-title">Checkout</span>
+				<!-- <i class="material-icons mdl-badge enter" data-badge="0" id="count">shopping_cart</i> -->
+				<div class="mdl-card__menu"></div>
+			</div>
+		</header>
+		<!-- Drawer  begin-->
+		<div class="mdl-layout__drawer">
+			<span class="mdl-layout-title">A1ZA</span>
+			<img id="googleLogin" class="login" src="img/google-signin.png">
+			<div id="userInfo">
+					<img id="profilePicture"></img>
+					<h6 class="rightCorner" ng-model="userName" id="userName"></h6>
+					<!-- <span id="email"></span> -->
+				</div>
+			<nav class="mdl-navigation">
+				<a class="mdl-navigation__link" href="index.html">Shop</a>
+				<a class="mdl-navigation__link" href="dashboard.html">Dashboard</a>
+			</nav>
+		</div>
+		<!-- Drawer  end-->
+		<div id="wrapper">
+			<div class="content">
+				<div id="OuterCircle">
+					<div id="innerCircle"><img src="img/shoppingCart.png"></div>
+					<span id="contentCircle">
+						<p>Empty cart</p>
+						<div>There are currently no items in cart, why don't you go add some
+							<a href="index.html">here!</a></div>
+						</span>
+					</div>
+					<div id="tableWrapper">
+					<table id="myTable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="display:none;" ng-controller="displayTable">
+						<thead>
+							<tr>
+								<th></th>
+								<th class="mdl-data-table__cell--non-numeric">Product</th>
+								<th class="mdl-data-table__cell--non-numeric">Brand</th>
+								<th class="mdl-data-table__cell--non-numeric">Operating System</th>
+								<th>Price</th>
+								<th>Quantity</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody ng-repeat="product in products" on-last-repeat priceDirective>
+							<tr class="productRow" id="{{product.id}}">
+								<td id="deleteButtonTd">
+									<button class="mdl-button mdl-js-button mdl-button--icon">
+									<i class="material-icons" id="removeItem">delete</i>
+									</button>
+								</td>
+								<td class="mdl-data-table__cell--non-numeric"> {{ product.name }}</td>
+								<td class="mdl-data-table__cell--non-numeric"> {{ product.brand }}</td>
+								<td class="mdl-data-table__cell--non-numeric"> {{ product.operatingSystem }}</td>
+								<td> {{ product.price }}</td>
+								<td><input type="number" max="99" min="1" max-length="2" ng-model="product.quantity" ng-init="product.quantity=1.00" id="quantity"></input></td>
+								<td ng-model="itemTotal"> {{ product.price * product.quantity }}$</td>
+							</tr>
+						</tbody>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="mdl-data-table__cell--non-numeric"><b>Total: </b>{{ getTotal() }}</td>
+					</table>
+					<!-- Tabl3 wrapper ends -->
+					</div>
+					<!-- Table container -->				
+				</div>
+			</div>
+			<!-- Wrapper end -->
+		</div>
+		<!-- bigCard end -->
+		
+	</body>
+</html>

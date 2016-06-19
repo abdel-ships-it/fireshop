@@ -1,0 +1,40 @@
+<div class="mdl-card mdl-shadow--2dp product card{{ product.id }}" ng-repeat="product in products | filter:productsFilter | filter:modelFilter" on-last-repeat>
+	<div class="mdl-card__title">
+		<h2 class="mdl-card__title-text" >{{ product.name }}</h2>
+		<div class="mdl-layout-spacer"></div>
+		<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect">
+		<i class="icon material-icons info" id="extraInfoButton{{ product.id }}">info_outline</i>
+	</div>
+	<img class="productImage" ng-src="{{product.img}}" alt="{{ product.name }}">
+	<div class="mdl-card__supporting-text">Price: <b>{{ product.price }}$</b></div>
+	<div class="mdl-card__supporting-text extraInformation">
+		<p>Processor: Intel Core i7-4516HQ</p>
+		<p>Ram: 12GB | Type: DDR3</p>
+		<p>Storage: 256GB SSD | Speed: 7000 RPM</p>
+		<p>OS: {{ product.operatingSystem }}</p>
+		<p>Screensize: 15.6 inches</p>
+		<p>WiFi Type: 802.11b/g/n</p>
+		<hr>
+		<span>
+			<div ng-repeat="(key, data) in reviews[$index]">User:{{ data.user }} | Comment:{{ data.comment }} | Rating:{{ data.rating }}</div>
+		</span>
+		<hr>
+		<!-- Comments testing -->
+		<label class="addingReviewsWarning">To add a review please <a href="" class="login">login</a></label>
+		<div class="addingReviews">
+			Reviewing as <span class="userName"></span>
+			<input type="text" class="{{ product.id }}"></input>
+			<button class="addComment">Add</button>
+		</div>
+	</div>
+	<div id="{{ product.id }}" class="mdl-card__actions mdl-card--border">
+		<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-js-ripple-effect Add">
+			Add to cart
+		</a>
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect Remove RemoveButtonColor">
+			Remove from cart
+		</a>
+		<!-- <div class="mdl-layout-spacer"></div>
+		<i class="material-icons addCart">add_shopping_cart</i> -->
+	</div>
+	<!-- Card end -->

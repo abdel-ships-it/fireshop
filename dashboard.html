@@ -1,0 +1,151 @@
+<!doctype html>
+<html ng-app="Webshop">
+	<head>
+		<meta charset="utf-8">
+		<title>Dashboard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#2196F3"></meta>
+		<!-- Delete -->
+		<link rel="stylesheet" href="styling/dashboard.css">
+		<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-red.min.css">
+		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+		<script src="js/controllers/dashboard.js"></script>
+		<script src="js/directives/dashcard.js"></script>
+		
+	</head>
+
+	<body ng-controller="dashboard">
+		<p id="warning">Your screen size doesn't meet the requirments to proberly use the dashboard, please download the android app <a href="index.html">here</a></p>
+		<div id="Container">
+			<div id="Edge"></div>
+			<div id="Card" class="mdl-card mdl-shadow--4dp">
+				<!-- Simple header with fixed tabs. -->
+				<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+					mdl-layout--fixed-tabs">
+					<header class="mdl-layout__header">
+						<div class="mdl-layout__header-row">
+							<h4>Dashboard</h4>
+						</div>
+						<!-- Tabs -->
+						<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+							<a href="#fixed-tab-1" class="mdl-layout__tab is-active">Add</a>
+							<a href="#fixed-tab-2" class="mdl-layout__tab">Manage</a>
+							<a href="#fixed-tab-3" class="mdl-layout__tab">Images</a>
+						</div>
+					</header>
+					
+					
+					<main class="mdl-layout__content">
+					<section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+						<div class="page-content">
+							<h3>Demo notice</h3>
+							<p>Please don't delete any of the existing projects under manage unless you add our own.</p>
+							<div id="addingProductContainer">
+								<div id="addProductCard" class="mdl-card mdl-shadow--2dp">
+									<div class="mdl-card__title">
+										<h1 class="mdl-card__title-text">Add product</h1>
+									</div>
+									
+									<div id="supportingText" class="mdl-card__supporting-text">
+										<p>Preview on the right, add the item to the database once done</p>
+										
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input ng-model="titleValue"  maxlength="15" class="mdl-textfield__input" type="text" id="title" />
+											<label class="mdl-textfield__label" for="title">Title</label>
+										</div>
+										
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input maxlength="8" ng-model="priceValue" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price" />
+											<label class="mdl-textfield__label" for="price">Price</label>
+											<span class="mdl-textfield__error">Input is not a number!</span>
+										</div>
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input maxlength="15" class="mdl-textfield__input" type="text" id="Brand" />
+											<label class="mdl-textfield__label" for="Brand">Brand</label>
+										</div>
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input maxlength="15" class="mdl-textfield__input" type="text" id="Model" />
+											<label class="mdl-textfield__label" for="Model">Model</label>
+										</div>
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input maxlength="15" class="mdl-textfield__input" type="text" id="OS" />
+											<label class="mdl-textfield__label" for="OS">Operating System</label>
+										</div>
+										<!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+													<input ng-model="imageValue" class="mdl-textfield__input" type="text" id="imageURL" />
+													<label class="mdl-textfield__label" for="imageURL">Image</label>
+										</div> -->
+										<br><span id="pImage">Image:</span>
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label">
+											<label class="mdl-button mdl-js-button mdl-button--icon" for="imageURL">
+												<i class="material-icons">insert_link</i>
+											</label>
+											<div class="mdl-textfield__expandable-holder">
+												<input ng-model="imageValue" class="mdl-textfield__input" type="text" id="imageURL" />
+												<label class="mdl-textfield__label" for="imageURL">URL</label>
+											</div>
+										</div>
+										<!-- <h6>Image: <input type="file" id="picturesUpload"></h6> -->
+										
+									</div>
+									<button id="fabAdd" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+									<i class="material-icons">add</i>
+									</button>
+									
+									
+									<div class="mdl-card__menu">
+										<div id="spinner" class="mdl-spinner mdl-js-spinner is-active" style="display:none"></div>
+									</div>
+								</div>
+								
+								
+								<div id="preview">
+									<div class="mdl-card mdl-shadow--2dp">
+										<div class="mdl-card__title">
+											<h2 class="mdl-card__title-text">{{ titleValue }}</h2>
+											<div class="mdl-layout-spacer"></div>
+											<button class="mdl-button mdl-js-button mdl-button--icon">
+											<i class="material-icons info">info</i>
+											</button>
+										</div>
+										<img src="img/noimage.png" ng-src="{{ imageValue }}">
+										<div class="mdl-card__supporting-text">Price: {{ priceValue }} $</b></div>
+										<div class="mdl-card__actions mdl-card--border product">
+											<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect Add">
+												Add to cart
+											</a>
+											<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect Remove">
+												Remove from cart
+											</a>
+											<div class="mdl-layout-spacer"></div>
+											<i class="material-icons addCart">add_shopping_cart</i>
+										</div>
+										<!-- end of card -->
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="mdl-layout__tab-panel" id="fixed-tab-2">
+							<div class="page-content">
+								
+									 <dashcard class="productsContainer" products="products" functions="dirFns"></dashcard>							
+									  
+									  <!-- <pre>{{products | json}}</pre> -->
+		
+							</div>
+						</section>
+						<section class="mdl-layout__tab-panel" id="fixed-tab-3">
+							<div class="page-content">
+								
+							</div>
+						</section>
+						</main>
+					</div>
+				</div>
+			</body>
+		</html>
