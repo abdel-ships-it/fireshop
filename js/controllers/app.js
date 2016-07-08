@@ -122,7 +122,7 @@ app.directive('onLastRepeat', function() {
         });
         //Adding reviews
         $(".productsContainer").on("click", ".addComment", function() {
-            reviewsDB.child($(this).siblings("input").attr("class")).push({
+            myData.child("reviews/").child($(this).siblings("input").attr("class")).push({
                 user: $scope.authDataGlobal.google.displayName,
                 comment: $(this).siblings("input").val(),
                 rating: Math.floor(Math.random() * 10) + 1  
